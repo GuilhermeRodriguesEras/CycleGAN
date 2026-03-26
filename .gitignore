@@ -5,3 +5,5 @@ env/
 Sonic/
 .vscode/
 Torch/
+.dataset/
+dataset/
