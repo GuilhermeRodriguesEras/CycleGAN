@@ -20,19 +20,9 @@ CHECKPOINT_CRITIC_G = "criticg.pth.tar"
 
 transforms = A.Compose(
     [
-        A.LongestMaxSize(max_size=256),
-        A.PadIfNeeded(
-            min_height=256, 
-            min_width=256, 
-            border_mode=0, 
-            value=(0, 0, 0)
-        ),
+        A.Resize(width=256, height=256),
         A.HorizontalFlip(p=0.5),
-        A.Normalize(
-            mean=[0.5, 0.5, 0.5], 
-            std=[0.5, 0.5, 0.5], 
-            max_pixel_value=255
-        ),
+        A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5], max_pixel_value=255),
         ToTensorV2(),
     ],
     additional_targets={"image0": "image"},
